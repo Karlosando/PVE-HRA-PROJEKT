@@ -5,13 +5,15 @@ import java.awt.event.KeyListener;
 
 public class Player extends JPanel implements KeyListener {
 
+
+
     private int playerX = 400;
     private int playerY = 300;
     private int speed = 4;
     private ImageIcon playerImg = new ImageIcon("Crash.png");
 
 
-    private boolean up, down, left, right;
+    private boolean up, down, left, right, shift;
 
     public Player() {
         this.setFocusable(true);
@@ -23,6 +25,8 @@ public class Player extends JPanel implements KeyListener {
             if (down)  playerY += speed;
             if (left)  playerX -= speed;
             if (right) playerX += speed;
+            if (shift) speed = 8;
+                else speed = 4;
 
             repaint();
         });
@@ -49,6 +53,7 @@ public class Player extends JPanel implements KeyListener {
         if (key == KeyEvent.VK_S) down = true;
         if (key == KeyEvent.VK_A) left = true;
         if (key == KeyEvent.VK_D) right = true;
+        if (key == KeyEvent.VK_SHIFT) shift = true;
     }
 
 
@@ -60,6 +65,7 @@ public class Player extends JPanel implements KeyListener {
         if (code == KeyEvent.VK_S) down = false;
         if (code == KeyEvent.VK_A) left = false;
         if (code == KeyEvent.VK_D) right = false;
+        if (code == KeyEvent.VK_SHIFT) shift = false;
     }
 
     @Override
