@@ -1,24 +1,26 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Intro extends JPanel {
+public class Intro extends JPanel{
 
-    public Intro(JFrame okno, String gif, int sekundy) {
-        setBackground(Color.BLACK);
-        setLayout(new BorderLayout());
+    public Intro(String gif,int sekundy) {
+        this.setBackground(Color.BLACK);
+        this.setLayout(new BorderLayout());
 
-        // Vložení GIFu na střed panelu
-        add(new JLabel(new ImageIcon(gif)), BorderLayout.CENTER);
+        ImageIcon gifintro = new ImageIcon(gif);
+        JLabel label = new JLabel(gifintro);
+        this.add(label,BorderLayout.CENTER);
 
-        Timer t = new Timer(sekundy * 1000, e -> {
-            SwingUtilities.invokeLater(() -> {
 
-                okno.remove(this); // 1. OBRATEM smaže intro z okna
-                okno.revalidate(); // 3. Osvěží vnitřní strukturu okna (opraví bugy s rozvržením)
-                okno.repaint();    // Fyzicky překreslí grafiku na obrazovce
-            });
+        Timer t = new Timer(sekundy * 1000,actionEvent -> {
+            this.remove(label); // Smaže GIF z plochy
+            this.setVisible(false);
+            this.revalidate(); // Obnoví uspořádání prvků
+            this.repaint();    // Fyzicky překreslí obrazovku načisto
+
         });
-        t.setRepeats(false); // Spustí se pouze jednou
+        t.setRepeats(false);
         t.start();
     }
+
 }

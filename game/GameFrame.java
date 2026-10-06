@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class GameFrame extends JFrame {
 
@@ -8,12 +9,13 @@ public class GameFrame extends JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        Intro intro = new Intro("gogo.gif",3);
+        this.add(intro, BorderLayout.CENTER);
+        this.setVisible(true);
 
         Player player = new Player();
         this.add(player);
-        Intro intro = new Intro(this,"gogo.gif",5);
-        this.add(intro);
+        player.requestFocusInWindow();
 
-        this.setVisible(true);
     }
 }
