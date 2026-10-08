@@ -16,6 +16,8 @@ public class GameFrame extends JFrame {
         Player player = new Player();
         this.add(player);
         player.requestFocusInWindow();
+        Enemy01 enemy01 = new Enemy01();
+        this.add(enemy01);
 
     }
 }
