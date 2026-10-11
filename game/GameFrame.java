@@ -1,23 +1,20 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class GameFrame extends JFrame {
 
+    Panel panel;
+
     GameFrame() {
         this.setTitle("Game Frame");
-        this.setSize(800, 600);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        Intro intro = new Intro("gogo.gif",3);
-        this.add(intro, BorderLayout.CENTER);
+        this.panel = new Panel();
+
+        this.add(panel);
+        this.pack();
+
+
         this.setVisible(true);
-
-        Player player = new Player();
-        this.add(player);
-        player.requestFocusInWindow();
-        Enemy01 enemy01 = new Enemy01();
-        this.add(enemy01);
-
     }
 }
