@@ -4,13 +4,14 @@ import java.awt.*;
 public class Panel extends JPanel {
     Player_model playermodel;
     Player_movement playermovement;
+    Tree tree;
 
     Panel(){
         this.setPreferredSize(new Dimension(500, 500));
         this.setBackground(new Color(34, 139, 34));
 
         this.playermodel=new Player_model(400,100);
-
+        this.tree=new Tree(500,500);
 
         this.playermovement = new Player_movement(this.playermodel);
         this.setFocusable(true);
@@ -39,6 +40,7 @@ public class Panel extends JPanel {
         g2.drawString("ahoj ondro jak se ti to libi?",50,500);
 
         this.playermodel.paint(g2);
+        this.tree.paint(g2);
 
     }
 }
