@@ -15,6 +15,15 @@ public class Panel extends JPanel {
         this.playermovement = new Player_movement(this.playermodel);
         this.setFocusable(true);
         this.addKeyListener(playermovement);
+        this.starttimer();
+    }
+
+    public void starttimer(){
+        Timer timer = new Timer(16,e->{
+            playermovement.update();
+            repaint();
+        });
+        timer.start();
     }
 
     @Override
@@ -30,8 +39,6 @@ public class Panel extends JPanel {
         g2.drawString("ahoj ondro jak se ti to libi?",50,500);
 
         this.playermodel.paint(g2);
-
-        repaint();
 
     }
 }

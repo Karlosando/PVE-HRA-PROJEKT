@@ -12,16 +12,14 @@ public class Player_movement implements KeyListener {
 
     public Player_movement(Player_model playermodel) {
         this.playermodel = playermodel;
+    }
 
-        Timer timer = new Timer(16, e -> {
-            if (up == true) playermodel.move(0, -speed);
-            if (left == true) playermodel.move(-speed, 0);
-            if (down == true) playermodel.move(0, +speed);
-            if (right == true) playermodel.move(+speed, 0);
 
-        });
-        timer.start();
-
+    public void update(){
+        if (up == true) playermodel.move(0, -speed);
+        if (left == true) playermodel.move(-speed, 0);
+        if (down == true) playermodel.move(0, +speed);
+        if (right == true) playermodel.move(+speed, 0);
     }
 
     @Override
