@@ -4,7 +4,14 @@ import java.awt.*;
 public class Panel extends JPanel {
     Player_model playermodel;
     Player_movement playermovement;
-    Tree tree;
+    private Tree[] trees={
+            new Tree(100, 100),
+            new Tree(250, 50),
+            new Tree(50, 300),
+            new Tree(150, 250),
+            new Tree(350, 150),
+            new Tree(300, 200)
+    };
 
     Panel(){
         this.setPreferredSize(new Dimension(500, 500));
@@ -12,13 +19,11 @@ public class Panel extends JPanel {
 
         this.playermodel=new Player_model(400,100);
 
-        this.tree=new Tree(100,100);
-
         this.playermovement = new Player_movement(this.playermodel);
         this.setFocusable(true);
         this.addKeyListener(playermovement);
 
-        Mouse_hitbox mouseHitbox = new Mouse_hitbox(this.tree);
+        Mouse_hitbox mouseHitbox = new Mouse_hitbox(this.trees);
         this.addMouseListener(mouseHitbox);
     }
 
@@ -35,7 +40,10 @@ public class Panel extends JPanel {
         g2.drawString("ahoj ondro jak se ti to libi?",50,500);
 
         this.playermodel.paint(g2);
-        this.tree.paint(g2);
+
+        for(Tree s : trees){
+            s.paint(g2);
+        }
 
         repaint();
 

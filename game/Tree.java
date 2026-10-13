@@ -28,8 +28,6 @@ public class Tree {
 
 
     public void changeImage() {
-
-        System.out.println(tree_icons.length);
         if(currentImageIndex < tree_icons.length-1){
             currentImageIndex++;
         }

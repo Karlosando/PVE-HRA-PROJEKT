@@ -2,16 +2,21 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Mouse_hitbox implements MouseListener{
-    private Tree tree;
+    private Tree[] trees;
 
-    public Mouse_hitbox(Tree tree) {
-        this.tree = tree;
+    public Mouse_hitbox(Tree[] trees) {
+        this.trees = trees;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getButton() == MouseEvent.BUTTON1 && tree.getHitbox().contains(e.getPoint())) {
-            tree.changeImage();
+        if (e.getButton() == MouseEvent.BUTTON1){
+            for(Tree s : trees){
+                if(s.getHitbox().contains(e.getPoint())){
+                    s.changeImage();
+                    e.getComponent().repaint();
+                }
+            }
         }
     }
 
